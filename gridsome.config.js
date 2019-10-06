@@ -1,0 +1,73 @@
+// This is where project configuration and plugin options are located. 
+// Learn more: https://gridsome.org/docs/config
+
+// Changes here require a server restart.
+// To restart press CTRL + C in terminal and run `gridsome develop`
+
+module.exports = {
+  siteName: 'Espace IVY',
+  transformers: {
+    remark: {
+      externalLinksTarget: '_blank',
+      externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
+      anchorClassName: 'icon icon-link',
+      plugins: [
+        // ...global plugins
+      ]
+    }
+  },
+  plugins: [
+    {
+      use: '@gridsome/plugin-google-analytics',
+      options: {
+        id: 'UA-XXXXXXXXX-X'
+      }
+    },
+    {
+      use: '@gridsome/plugin-sitemap',
+      options: {
+        cacheTime: 600000, // default
+        exclude: [],
+        config: {
+          '/about': {
+            changefreq: 'monthly',
+            priority: 0.7
+          }
+        }
+      }
+    },
+    {
+      use: '@gridsome/source-airtable',
+      options: {
+        apiKey: 'YOUR_API_KEY', // required
+        baseId: 'YOUR_BASE_ID', // required
+        tableName: 'YOUR_TABLE_NAME', // required
+        typeName: 'YOUR_TYPE_NAME', // required
+      }
+    },
+    {
+      use: 'gridsome-plugin-netlify-cms',
+      options: {
+
+      }
+    },
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'posts/**/*.md',
+        typeName: 'Post',
+        remark: {
+          plugins: [
+            // ...local plugins
+          ]
+        }
+      }
+    },
+    {
+      use: `gridsome-plugin-netlify-cms`,
+      options: {
+        publicPath: `/admin`
+      }
+    }
+  ]
+}

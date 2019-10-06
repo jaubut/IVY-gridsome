@@ -10,17 +10,14 @@ module.exports = {
     remark: {
       externalLinksTarget: '_blank',
       externalLinksRel: ['nofollow', 'noopener', 'noreferrer'],
-      anchorClassName: 'icon icon-link',
-      plugins: [
-        // ...global plugins
-      ]
+      anchorClassName: 'icon icon-link'
     }
   },
   plugins: [
     {
       use: '@gridsome/plugin-google-analytics',
       options: {
-        id: 'UA-XXXXXXXXX-X'
+        id: 'UA-149485074-1'
       }
     },
     {
@@ -34,15 +31,6 @@ module.exports = {
             priority: 0.7
           }
         }
-      }
-    },
-    {
-      use: '@gridsome/source-airtable',
-      options: {
-        apiKey: 'YOUR_API_KEY', // required
-        baseId: 'YOUR_BASE_ID', // required
-        tableName: 'YOUR_TABLE_NAME', // required
-        typeName: 'YOUR_TYPE_NAME', // required
       }
     },
     {
